@@ -2,13 +2,13 @@ const item = require('../models/Item')
 
 const createItem = async(req,res)=>{
     try{
-        const {name,type,price,quantity} =req.body
+        const {name,category,brand,price} =req.body
         
         const Item = new item({
             name,
-            type,
-            price,
-            quantity
+            category,
+            brand,
+            price
         })
         await Item.save()
         res.status(201).json(Item)
@@ -27,6 +27,3 @@ const getItems = async(req,res)=>{
         res.status(500).json({message:"server error"})
     }
 }
-
-
-module.exports ={createItem,getItems}

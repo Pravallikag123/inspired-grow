@@ -1,12 +1,28 @@
+const Service = require('../models/Service')
 
-const createService = (req, res) => {
+const createService = async (req, res) => {
+  try {
+    const { name, description, price } = req.body
 
-    res.send('Service created')
+    const newService = new Service({
+      name,
+      description,
+      price
+    })
+
+    
+    const savedService = await newService.save()
+
+    
+    res.status(201).json(savedService)
+  } catch (err) {
+    res.status(500).json({ message: "Error creating service", error: err.message })
   }
+}
 
-  module.exports = {
-    createService,  
-  }
-  
+module.exports = {
+  createService,  
+}
+
 
   

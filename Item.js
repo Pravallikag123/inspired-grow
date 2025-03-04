@@ -1,20 +1,22 @@
 const mongoose = require ('mongoose')
+const Category = require('./Category')
+const Brand = require('./Brand')
 
 const ItemSchema = new mongoose.Schema({
-//  name, type, price, quantity
+//  name, category, brand, price 
 name:{
     type:String,
     required:true
 },
-type:{
+category:{
+    type:String,
+    required:true
+},
+brand:{
     type:String,
     required:true
 },
 price:{
-    type:Number,
-    required:true
-},
-quantity:{
     type:Number,
     required:true
 }
